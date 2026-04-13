@@ -1,5 +1,5 @@
 # Install with:
-#   brew tap luno/luno-mcp-homebrew
+#   brew tap luno/luno-mcp
 #   brew install luno-mcp
 
 class LunoMcp < Formula

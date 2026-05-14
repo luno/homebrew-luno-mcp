@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v6
@@ -69,11 +70,21 @@ jobs:
           update_sha "luno-mcp-linux-arm64.tar.gz" "${{ steps.shas.outputs.linux_arm64 }}"
           update_sha "luno-mcp-linux-amd64.tar.gz" "${{ steps.shas.outputs.linux_amd64 }}"
 
-      - name: Commit and push
+      - name: Commit and open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -eo pipefail
+          VERSION="${{ steps.vars.outputs.version }}"
+          BRANCH="update-formula/${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${BRANCH}"
           git add Formula/luno-mcp.rb
-          git commit -m "luno-mcp ${{ steps.vars.outputs.version }}"
-          git push
+          git commit -m "luno-mcp ${VERSION}"
+          git push --set-upstream origin "${BRANCH}"
+          gh pr create \
+            --title "luno-mcp ${VERSION}" \
+            --body "Automated formula update for luno-mcp ${VERSION}." \
+            --base main \
+            --head "${BRANCH}"

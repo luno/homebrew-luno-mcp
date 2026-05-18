@@ -39,7 +39,7 @@ jobs:
         run: |
           set -eo pipefail
           while IFS=" " read -r sha filename; do
-            platform=$(echo "$filename" | sed 's/luno-mcp-//;s/\.tar\.gz//')
+            platform=$(echo "$filename" | sed 's|^\./||;s/luno-mcp-//;s/\.tar\.gz//')
             key="${platform//-/_}"
             echo "${key}=${sha}" >> "$GITHUB_OUTPUT"
           done < checksums.txt

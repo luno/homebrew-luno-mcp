@@ -6,29 +6,29 @@ class LunoMcp < Formula
   desc "MCP server for the Luno cryptocurrency exchange API"
   homepage "https://github.com/luno/luno-mcp"
   license "MIT"
-  version "0.6.0"
+  version "0.6.3"
 
   on_macos do
     on_arm do
       url "https://github.com/luno/luno-mcp/releases/download/v#{version}/luno-mcp-darwin-arm64.tar.gz"
-      sha256 "623227dd0359726655daf49c18ce78537793e68ab6aa71f89c324ffc662a42cc"
+      sha256 "e052c69e1353cf057aa3486c70577c9945f2ea2173984ff1e58d468628a57875"
     end
 
     on_intel do
       url "https://github.com/luno/luno-mcp/releases/download/v#{version}/luno-mcp-darwin-amd64.tar.gz"
-      sha256 "1bf22dde512cdd1b199a2ae954e770db3f915109adb9109ee6a7853cf4f466a3"
+      sha256 "25cbc9487e352338e671fb96d41933787f845ddf54f8266e3cf4b168d5d0122f"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/luno/luno-mcp/releases/download/v#{version}/luno-mcp-linux-arm64.tar.gz"
-      sha256 "e960ef8bb8c03648d54d65b092f68adc829b2e0733ba2ed44547ae495830f7a2"
+      sha256 "427bde9b8aef144bd643936f65ec624060fcb856cad9a267a35ce02c54d229f8"
     end
 
     on_intel do
       url "https://github.com/luno/luno-mcp/releases/download/v#{version}/luno-mcp-linux-amd64.tar.gz"
-      sha256 "6a4689c5bbc039998f030db591641f1cc327f146418ea74772019212679931ff"
+      sha256 "17f5cbc0c4966b907841f18d997723a2651c42bdfe7d8dbc4c61ba11800ba3d5"
     end
   end
 
